@@ -31,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePage extends State<MyHomePage> {
+  DateTime _lastTime=null;
   @override
   Widget build(BuildContext context) {
     List<TabBarModel> pages = <TabBarModel>[
@@ -59,7 +60,42 @@ class _MyHomePage extends State<MyHomePage> {
         page: new PageviewFour(),
       ),
     ];
-    return new RootTabBar(pages: pages, currentIndex: 0);
+    return WillPopScope(
+      child:  new RootTabBar(pages: pages, currentIndex: 0),
+      onWillPop: () async {
+        if (_lastTime == null ||
+            DateTime.now().difference(_lastTime) >
+                Duration(milliseconds: 2000)) {
+          _lastTime = DateTime.now();
+          return false;
+        } else {
+          return showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (BuildContext context){
+                return AlertDialog(
+                  title: Text('退出App'),
+                  content: Text('别怪我没告诉你哦'),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text('CANCEL',),
+                      onPressed: (){
+                        Navigator.pop(context, false);
+                      },
+                    ),FlatButton(
+                      child: Text('SURE',),
+                      onPressed: (){
+                        Navigator.pop(context, true);
+                      },
+                    ),
+                  ],
+                );
+              }
+          );
+        }
+      },
+    );
+
   }
 }
 

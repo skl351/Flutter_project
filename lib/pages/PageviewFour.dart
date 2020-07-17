@@ -6,11 +6,15 @@ class PageviewFour extends StatefulWidget {
   State<StatefulWidget> createState() => _PageviewFour();
 }
 
-class _PageviewFour extends State<PageviewFour> {
+class _PageviewFour extends State<PageviewFour> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Text('PageviewFour'),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

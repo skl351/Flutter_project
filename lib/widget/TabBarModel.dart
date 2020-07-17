@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:sklapp/config/config.dart';
 import 'package:sklapp/customview/MyBaseViewTopBar.dart';
 
@@ -78,6 +79,7 @@ class RootTabBarState extends State<RootTabBar> {
     }
 
     return Scaffold(
+
       bottomNavigationBar: Theme(
         data: new ThemeData(
           canvasColor: Colors.grey[50],
@@ -93,6 +95,7 @@ class RootTabBarState extends State<RootTabBar> {
       appBar: MyBaseViewTopBar(
         childView: BaseTitleBar(
           title(),
+          leftIcon: Icons.image,
           rightText: '点击',
           rightClick: () {
             print("点击来一下");

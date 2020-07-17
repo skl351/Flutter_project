@@ -51,7 +51,7 @@ class BaseTitleBar extends StatelessWidget {
         icon: Icon(this.leftIcon),
         color: Colors.white,
         onPressed: () {
-          Navigator.pop(context);
+//          Navigator.pop(context);
         },
       ),
       brightness: Brightness.dark,
